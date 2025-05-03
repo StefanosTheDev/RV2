@@ -1,0 +1,51 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main container */
+.tasklist {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Individual task card */
+.tasklist ul {
+  list-style-type: none;
+}
+
+.tasklist li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.tasklist li:hover {
+  background-color: #eaeaea;
+  transform: translateY(-2px);
+}
+
+.tasklist li span {
+  font-weight: bold;
+  color: #333;
+}
+
+.tasklist li .done {
+  color: green;
+}
+
+.tasklist li .not-done {
+  color: red;
+}

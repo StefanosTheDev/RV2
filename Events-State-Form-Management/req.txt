@@ -1,0 +1,64 @@
+Perfect — you want something that’s foundational, a bit challenging, and solidifies:
+
+✅ useState
+
+✅ Form inputs (controlled components)
+
+✅ Event handling (click, submit, change)
+
+✅ Updating lists
+
+✅ Conditional rendering
+
+
+
+
+
+
+🔧 Project: Task Manager Lite
+A simple app that lets users:
+
+✅ Add a task (with title & priority)
+
+🗑 Delete a task
+
+📋 Filter tasks by priority (Low, Medium, High)
+
+✅ Bonus: Toggle whether a task is marked "done"
+
+
+
+
+
+💡 Core Features (You’ll Learn)
+Feature	Skill Practiced
+Controlled Inputs	onChange, useState
+Form Submission	onSubmit, validation
+Dynamic List Rendering	map(), keys, JSX
+Immutably Updating Arrays	setState([...prev, obj])
+Event Handling	onClick, arrow functions
+
+🧠 Suggested Components
+App.js
+Holds master task state
+
+Renders <TaskForm />, <TaskList />, <FilterBar />
+
+TaskForm.js
+Two inputs:
+
+Task title (text)
+
+Priority (dropdown: Low, Medium, High)
+
+Submit button adds to task list
+
+TaskList.js
+Maps through filtered tasks
+
+Shows title, priority, done status, and delete button
+
+Each task has a "Mark Done" button (toggle done: true/false)
+
+FilterBar.js
+Buttons or dropdown to filter tasks by priority
