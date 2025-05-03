@@ -44,6 +44,7 @@ function App() {
     <div>
       {/* Pass tasks and toggleDone function as props */}
       <TaskList tasks={tasks} toggleDone={toggleDone} />
+      <Form />
     </div>
   );
 }
@@ -56,13 +57,24 @@ function TaskList({ tasks, toggleDone }) {
         {tasks.map((item) => (
           <li key={item.id}>
             {item.description} - {item.priority}
-            {/* If The Item is  */}
+            {/* If The Item of .Done then add this text  change.   */}
             {item.done ? 'Status: Done' : 'Status: Not Done'}
             <button onClick={() => toggleDone(item.id)}>Toggle</button>
           </li>
         ))}
       </ul>
     </div>
+  );
+}
+
+function Form() {
+  function handleSubmit() {}
+
+  return (
+    <form className="add-form" onSubmit={handleSubmit}>
+      <h3> What task do you need </h3>
+      <input type="text" placeholder='Task' value={} onChange={(e) => }
+    </form>
   );
 }
 
