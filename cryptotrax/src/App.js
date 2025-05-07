@@ -64,18 +64,24 @@ export default function App() {
   function handleSelectCoin(id) {
     setSelectedId(id);
   }
+  function handleDeselectCoin() {
+    setSelectedId(null);
+  }
 
   return (
     <div className="App">
       <NavBar>
         <Search query={query} setQuery={setQuery} />
       </NavBar>
-
       {/* MAIN NOW */}
       <CryptoList coins={coins} onSelectCoin={handleSelectCoin} />
 
       {selectedId ? (
-        <CoinDetails coins={coins} selectedId={selectedId} />
+        <CoinDetails
+          coins={coins}
+          selectedId={selectedId}
+          onDeselect={handleDeselectCoin}
+        />
       ) : (
         <div>Nothing Selected</div>
       )}
@@ -131,7 +137,7 @@ function Coin({ coin, onSelectCoin }) {
     </li>
   );
 }
-function CoinDetails({ selectedId, coins }) {
+function CoinDetails({ selectedId, coins, onDeselect }) {
   const coin = coins.find((c) => c.id === selectedId);
 
   if (!coin) return <div>Coin not found</div>;
@@ -145,13 +151,52 @@ function CoinDetails({ selectedId, coins }) {
       <p>Price: ${coin.pric_usd}</p>
       <p>Market Cap: ${coin.market_cap_usd}</p>
       <p>24h Change: {coin.change_24h}%</p>
+
+      {/* Custom Button Here */}
+      <Button onClick={onDeselect}>Back</Button>
     </div>
   );
 }
 
-function CoinsChosen({ selectedID }) {}
-// Once You choose an ID This compoenent will then take that ID and render it.
-function ChosenCrypto({ coin }) {}
-function Main({ children }) {
-  return <main className="main"> {children} </main>;
+function Button({ children, onClick }) {
+  return (
+    <button className="btn" onClick={onClick}>
+      {children}
+    </button>
+  );
 }
+function HoverCard() {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      className="hover-card"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        backgroundColor: isHovered ? '#e0f7fa' : '#f0f0f0',
+        padding: '1rem',
+        borderRadius: '8px',
+        transition: 'background-color 0.2s',
+      }}
+    >
+      {isHovered ? '👋 Hovering!' : 'Hover over me'}
+    </div>
+  );
+}
+function TooltipWrapper({ children, tooltipText }) {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  return (
+    <div
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
+      style={{ position: 'relative', display: 'inline-block' }}
+    >
+      {children}
+      {showTooltip && <div className="tooltip">{tooltipText}</div>}
+    </div>
+  );
+}
+
+function CryptoCard() {}
